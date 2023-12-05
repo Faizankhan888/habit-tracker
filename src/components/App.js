@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import Home from './Home';
 import WeekView from './WeekView';
 
 const App = () => {
+  const navigate = useNavigate();
   const [habits, setHabits] = useState([]);
   let id = 1;
   const addHabit = (name) => {
@@ -113,6 +114,14 @@ const App = () => {
     }
     setHabits(tempHabits);
   };
+
+  useEffect(() => {
+    const currentPath = window.location.pathname;
+    if (currentPath === '/') {
+      // Redirect to "/habit-tracker"
+      navigate('/habit-tracker');
+    }
+  }, [navigate]);
 
   return (
     <>

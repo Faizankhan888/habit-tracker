@@ -31,7 +31,7 @@ const WeekView = ({ habitDone, habitUnDone, habitNone, habits }) => {
         ))}
       </div>
       <div className="d-grid gap-2 col-6 mx-auto mt-5">
-        <button className="btn btn-primary" type="button" onClick={() => navigate("/")}>
+        <button className="btn btn-primary" type="button" onClick={() => navigate("/habit-tracker")}>
           Back to Detail View
         </button>
       </div>
