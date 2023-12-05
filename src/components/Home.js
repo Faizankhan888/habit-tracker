@@ -1,14 +1,14 @@
-import React from 'react'
-import Habits from './Habits'
-import Navbar from './Navbar'
+import React from 'react';
+import Habits from './Habits';
+import Navbar from './Navbar';
 
-const Home = () => {
+const Home = ({ addHabit, habits, deleteHabit }) => {
   return (
     <>
-      <Navbar name="Detail View"/>
-      <Habits/>
+      <Navbar name="Detail View" addHabit={addHabit} />
+      <Habits habits={habits} deleteHabit={deleteHabit} />
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

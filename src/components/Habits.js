@@ -1,17 +1,14 @@
-import React from 'react'
-import Habit from './Habit'
-import { useSelector } from "react-redux";
+import React from 'react';
+import Habit from './Habit';
 
-const Habits = () => {
-
-  // call use selector hook for getting state from reducer
-  let habitsState=useSelector((state)=>state["habits"])
-  
+const Habits = ({ habits, deleteHabit }) => {
   return (
-    <div className='habits'>
-      {habitsState.map((habit)=><Habit habit={habit} key={habit.id}/>)}
+    <div className="habits">
+      {habits.map((habit) => (
+        <Habit habit={habit} key={habit.id} deleteHabit={deleteHabit} />
+      ))}
     </div>
-  )
-}
+  );
+};
 
-export default Habits
+export default Habits;

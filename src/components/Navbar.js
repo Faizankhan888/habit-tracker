@@ -1,26 +1,21 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { addHabit } from "../redux/features/habitSlice";
+import React, { useState } from 'react';
+import { useEffect } from 'react';
 
-const Navbar = ({ name }) => {
-  // call use dispatch hook a variable call dispatch
-  const dispatch=useDispatch();
-
+const Navbar = ({ name, addHabit }) => {
   // change state acording time
   const [hour, setHour] = useState(0);
   useEffect(() => {
     const date = new Date();
     setHour(date.getHours());
   }, []);
-  
-  // function for add habit 
-  const handleSave=()=>{
-    const habitName=document.getElementById("habitName").value;
-    dispatch(addHabit(habitName));
-    alert("Your habit added successfully");
-    document.getElementById("habitName").value="";
-  }
+
+  // function for add habit
+  const handleSave = () => {
+    const habitName = document.getElementById('habitName').value;
+    addHabit(habitName);
+    alert('Your habit added successfully');
+    document.getElementById('habitName').value = '';
+  };
 
   return (
     <>
@@ -28,12 +23,12 @@ const Navbar = ({ name }) => {
         <h3>
           {/* acording to time its shows morning,afternoon,evening and night */}
           {hour <= 12
-            ? "Morning"
+            ? 'Morning'
             : hour <= 17
-            ? "Afternoon"
+            ? 'Afternoon'
             : hour <= 21
-            ? "Evening"
-            : "Night"}
+            ? 'Evening'
+            : 'Night'}
         </h3>
         <div className="right-nav">
           <h5>{name}</h5>
@@ -86,7 +81,11 @@ const Navbar = ({ name }) => {
               >
                 Cancel
               </button>
-              <button type="button" className="btn btn-primary" onClick={handleSave}>
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={handleSave}
+              >
                 Save
               </button>
             </div>
