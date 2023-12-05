@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import DayView from './DayView';
 import Navbar from './Navbar';
 
@@ -8,7 +8,7 @@ const WeekView = ({ habitDone, habitUnDone, habitNone, habits }) => {
   // getting habit from habits state acording to local storage id and set it on habit
   let habit = {};
   for (let i = 0; i < habits.length; i++) {
-    if (habits[i].id === Number(localStorage.getItem('id'))) {
+    if (habits[i].id === localStorage.getItem('id')) {
       habit = habits[i];
     }
   }

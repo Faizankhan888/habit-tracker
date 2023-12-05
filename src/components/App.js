@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import Home from './Home';
 import WeekView from './WeekView';
+import { v4 as uuidv4 } from 'uuid';
+
 
 const App = () => {
   const navigate = useNavigate();
   const [habits, setHabits] = useState([]);
-  let id = 1;
   const addHabit = (name) => {
     const today = new Date();
     let day = today.getDate() - today.getDay();
@@ -14,7 +15,7 @@ const App = () => {
     const year = today.getFullYear();
 
     const habit = {
-      id: id++,
+      id: uuidv4(),
       name,
       weekLog: [
         {
@@ -87,7 +88,7 @@ const App = () => {
   const habitDone = (id) => {
     let tempHabits = [...habits];
     for (let i = 0; i < tempHabits.length; i++) {
-      if (tempHabits[i].id === Number(localStorage.getItem('id'))) {
+      if (tempHabits[i].id === localStorage.getItem('id')) {
         tempHabits[i].weekLog[id].isDone = true;
       }
     }
@@ -98,7 +99,7 @@ const App = () => {
   const habitUnDone = (id) => {
     let tempHabits = [...habits];
     for (let i = 0; i < tempHabits.length; i++) {
-      if (tempHabits[i].id === Number(localStorage.getItem('id'))) {
+      if (tempHabits[i].id === localStorage.getItem('id')) {
         tempHabits[i].weekLog[id].isDone = false;
       }
     }
@@ -108,7 +109,7 @@ const App = () => {
   const habitNone = (id) => {
     let tempHabits = [...habits];
     for (let i = 0; i < tempHabits.length; i++) {
-      if (tempHabits[i].id === Number(localStorage.getItem('id'))) {
+      if (tempHabits[i].id === localStorage.getItem('id')) {
         tempHabits[i].weekLog[id].isDone = '';
       }
     }
