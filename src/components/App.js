@@ -118,7 +118,7 @@ const App = () => {
     <>
       <Routes>
         <Route
-          path="/"
+          path="/habit-tracker"
           element={
             <Home
               addHabit={addHabit}
